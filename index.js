@@ -14,32 +14,27 @@ api.use({
   client_secret: config.get('clientSecret'),
 });
 
-// This is where you would initially send users to authorize
 app.get('/login/ig', function(req, res) {
-  res.redirect(api.get_authorization_url(redirect_uri));
+  const deepLink = req.query.deepLink || 'exp://exp.host/@karaggeorge/mypulse';
+  res.redirect(api.get_authorization_url(`${redirect_uri}?deepLink=${deepLink}`));
 });
 
-// This is your redirect URI
 app.get('/auth/ig', function(req, res) {
-  api.authorize_user(req.query.code, redirect_uri, function(err, result) {
+  api.authorize_user(req.query.code, `${redirect_uri}?deepLink=${req.query.deepLink}`, function(err, result) {
     if (err) {
-      console.log(err.body);
-      res.redirect(`${config.get('domain')}?login=ig&err=${err.body}`);
+      res.redirect(`${req.query.deepLink}?err=${err.error_message}`);
     } else {
       console.log('Yay! Access token is ' + result.access_token);
-      res.redirect(`${config.get('domain')}?login=ig&token=${result.access_token}`);
+      console.log('redirecting to ', `${req.query.deepLink}?token=${result.access_token}`);
+      res.redirect(`${req.query.deepLink}?token=${result.access_token}`);
     }
   });
 });
 
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'static/build')));
 
-app.get('/privacy', function(req, res) {
-  res.sendFile(path.join(__dirname, 'public/privacy.html'));
-});
-
-app.get('/', function(req, res) {
-  res.sendFile('index.html');
+app.get('*', function(req, res) {
+  res.sendFile(path.join(__dirname, 'static/build/index.html'));
 });
 
 const port = config.get('port');
