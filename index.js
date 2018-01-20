@@ -15,7 +15,8 @@ api.use({
 });
 
 app.get('/login/ig', function(req, res) {
-  const deepLink = req.query.deepLink || 'exp://exp.host/@karaggeorge/mypulse';
+  const deepLink = req.query.deepLink;
+  console.log('Got deep link ', deepLink);
   res.redirect(api.get_authorization_url(`${redirect_uri}?deepLink=${deepLink}`));
 });
 
@@ -25,8 +26,8 @@ app.get('/auth/ig', function(req, res) {
       res.redirect(`${req.query.deepLink}?err=${err.error_message}`);
     } else {
       console.log('Yay! Access token is ' + result.access_token);
-      console.log('redirecting to ', `${req.query.deepLink}?token=${result.access_token}`);
-      res.redirect(`${req.query.deepLink}?token=${result.access_token}`);
+      console.log('redirecting to ', `${req.query.deepLink}token=${result.access_token}`);
+      res.redirect(`${req.query.deepLink}token=${result.access_token}`);
     }
   });
 });
