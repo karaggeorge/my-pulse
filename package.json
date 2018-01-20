@@ -16,5 +16,10 @@
   "bugs": {
     "url": "https://github.com/karaggeorge/my-pulse-web/issues"
   },
-  "homepage": "https://github.com/karaggeorge/my-pulse-web#readme"
+  "homepage": "https://github.com/karaggeorge/my-pulse-web#readme",
+  "dependencies": {
+    "config": "^1.29.2",
+    "express": "^4.16.2",
+    "instagram-node": "^0.5.8"
+  }
 }
