@@ -1,0 +1,19 @@
+{
+  "name": "my-pulse",
+  "version": "0.1.0",
+  "description": "Server and Website of the MyPulse app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/karaggeorge/my-pulse-web.git"
+  },
+  "author": "George Karagkiaouris",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/karaggeorge/my-pulse-web/issues"
+  },
+  "homepage": "https://github.com/karaggeorge/my-pulse-web#readme"
+}
