@@ -1,3 +1,5 @@
 {
-  "port": "PORT"
+  "port": "PORT",
+  "clientId": "CLIENT_ID",
+  "clientSecret": "CLIENT_SECRET"
 }
