@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "cd static && npm install && npm run build && cd .. && node index.js"
+    "build": "cd static && yarn build",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
