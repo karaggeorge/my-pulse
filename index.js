@@ -16,7 +16,7 @@ api.use({
 
 app.get('/login/ig', function(req, res) {
   const deepLink = req.query.deepLink;
-  res.redirect(api.get_authorization_url(`${redirect_uri}?deepLink=${deepLink}`, { scope: ['basic', 'public_content', 'follower_list']}));
+  res.redirect(api.get_authorization_url(`${redirect_uri}?deepLink=${deepLink}`, { scope: ['basic', 'public_content', 'follower_list', 'relationships']}));
 });
 
 app.get('/auth/ig', function(req, res) {
